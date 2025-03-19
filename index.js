@@ -1,6 +1,6 @@
-require("dotenv").config();
-const axios = require("axios");
-const { google } = require("googleapis");
+import "dotenv/config";
+import axios from "axios";
+import { google } from "googleapis";
 
 const API_KEY = process.env.YT_API_KEY;
 const OSU_API_KEY = process.env.OSU_API_KEY;
@@ -17,7 +17,7 @@ async function fetchLiveChatMessages() {
 
         for (const message of res.data.items) {
             const text = message.snippet.displayMessage;
-            const match = text.match(/^!req (\d+)$/); // Hanya menangkap angka setelah !req
+            const match = text.match(/^!req (\d+)$/);
             if (match) {
                 const beatmapId = match[1];
                 sendToDiscord(beatmapId);
