@@ -25,7 +25,7 @@ npm install
 ```
 
 ### 3. Buat File `.env`  
-Buat file `.env` di root folder dan masukkan API key yang diperlukan:  
+Rename `.env.example` menjadi `.env` lalu edit semua yang di perlukan :  
 ```env
 # API Key dari Google Cloud untuk YouTube Data API v3
 YT_API_KEY=your_youtube_api_key
@@ -46,8 +46,6 @@ YT_LIVE_CHAT_ID=your_live_chat_id
 >   https://www.googleapis.com/youtube/v3/videos?part=liveStreamingDetails&id=VIDEO_ID&key=YT_API_KEY
 >   ```
 > - Ambil nilai `liveStreamingDetails.activeLiveChatId`  
-
----
 
 ---
 
