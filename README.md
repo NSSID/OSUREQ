@@ -50,6 +50,45 @@ YT_LIVE_CHAT_ID=your_live_chat_id
 
 ---
 
+---
+
+## **🔑 Cara Mendapatkan YouTube API Key**  
+
+### **1. Buka Google Cloud Console**  
+1. Masuk ke **[Google Cloud Console](https://console.cloud.google.com/)**  
+2. Login dengan akun Google yang ingin kamu gunakan.  
+
+### **2. Buat atau Pilih Proyek**  
+1. Klik **"Select a project"** (Pilih proyek) di bagian atas.  
+2. Klik **"New Project"** (Proyek baru) jika belum ada proyek.  
+3. Beri nama proyek (misal: `OsuRequestBot`).  
+4. Klik **"Create"** (Buat).  
+
+### **3. Aktifkan YouTube Data API v3**  
+1. Di menu sebelah kiri, pilih **"APIs & Services" > "Library"**.  
+2. Cari **"YouTube Data API v3"**.  
+3. Klik **"Enable"** (Aktifkan).  
+
+### **4. Buat API Key**  
+1. Pergi ke **"APIs & Services" > "Credentials"**.  
+2. Klik **"Create Credentials"** > **"API Key"**.  
+3. Setelah API Key dibuat, salin key tersebut.  
+
+**🔹 Contoh API Key:**  
+```
+AIzaSyDk_example123456789-abcdefg
+```
+
+---
+
+## **📌 Menggunakan API Key di `.env`**
+Setelah mendapatkan API Key, tambahkan ke file `.env` seperti ini:  
+```env
+YT_API_KEY=AIzaSyDk_example123456789-abcdefg
+```
+
+---
+
 ## 📜 Penggunaan  
 Jalankan bot dengan perintah berikut:  
 ```sh
