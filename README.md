@@ -11,6 +11,12 @@ Bot ini memungkinkan penonton di YouTube Live Chat untuk mengetik `!req beatmap_
 
 ---
 
+## 🛑 Siapkan Sofware
+1. Nodejs 16+
+2. BTMC
+
+---
+
 ## 🚀 Instalasi & Konfigurasi  
 
 ### 1. Clone Repository & Masuk ke Direktori  
