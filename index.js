@@ -8,6 +8,8 @@ const DISCORD_WEBHOOK = process.env.DISCORD_WEBHOOK;
 const LIVE_CHAT_ID = process.env.YT_LIVE_CHAT_ID;
 const youtube = google.youtube({ version: "v3", auth: API_KEY });
 
+const processedMessages = new Set(); // Menyimpan ID pesan yang sudah diproses
+
 async function fetchLiveChatMessages() {
     try {
         const res = await youtube.liveChatMessages.list({
@@ -16,11 +18,17 @@ async function fetchLiveChatMessages() {
         });
 
         for (const message of res.data.items) {
+            const messageId = message.id;
+            if (processedMessages.has(messageId)) continue; // Lewati jika sudah diproses
+
             const text = message.snippet.displayMessage;
+            const username = message.authorDetails.displayName;
+
             const match = text.match(/^!req (\d+)$/);
             if (match) {
                 const beatmapId = match[1];
-                sendToDiscord(beatmapId);
+                processedMessages.add(messageId); // Tandai pesan sebagai sudah diproses
+                sendToDiscord(beatmapId, username);
             }
         }
     } catch (error) {
@@ -28,7 +36,7 @@ async function fetchLiveChatMessages() {
     }
 }
 
-async function sendToDiscord(beatmapId) {
+async function sendToDiscord(beatmapId, username) {
     try {
         const osuApiUrl = `https://osu.ppy.sh/api/get_beatmaps?k=${OSU_API_KEY}&b=${beatmapId}`;
         const response = await axios.get(osuApiUrl);
@@ -42,13 +50,14 @@ async function sendToDiscord(beatmapId) {
             fields: [
                 { name: "Mapper", value: beatmap.creator, inline: true },
                 { name: "Star Rating", value: beatmap.difficultyrating, inline: true },
-                { name: "BPM", value: beatmap.bpm, inline: true }
+                { name: "BPM", value: beatmap.bpm, inline: true },
+                { name: "Requested by", value: username, inline: false }
             ],
             thumbnail: { url: `https://b.ppy.sh/thumb/${beatmap.beatmapset_id}l.jpg` }
         };
 
         await axios.post(DISCORD_WEBHOOK, { embeds: [embed] });
-        console.log(`Sent ${beatmapId} to Discord`);
+        console.log(`Sent ${beatmapId} to Discord from ${username}`);
     } catch (error) {
         console.error("Error sending to Discord:", error);
     }
