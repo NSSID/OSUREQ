@@ -8,7 +8,6 @@ Bot ini memungkinkan penonton di YouTube Live Chat untuk mengetik `!req beatmap_
 ✅ Membaca pesan di YouTube Live Chat yang berisi `!req beatmap_id`  
 ✅ Mengambil detail beatmap dari osu! API  
 ✅ Mengirim embed ke Discord Webhook  
-✅ Menggunakan **ECMAScript Modules (ESM)** untuk kode yang lebih modern  
 
 ---
 
@@ -16,8 +15,8 @@ Bot ini memungkinkan penonton di YouTube Live Chat untuk mengetik `!req beatmap_
 
 ### 1. Clone Repository & Masuk ke Direktori  
 ```sh
-git clone https://github.com/your-repo/yt-osu-request-bot.git
-cd yt-osu-request-bot
+git clone https://github.com/neofetchnpc/Osrequest.git
+cd Osrequest
 ```
 
 ### 2. Install Dependencies  
