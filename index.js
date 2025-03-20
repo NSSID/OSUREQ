@@ -22,7 +22,7 @@ function saveData(data) {
     fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2));
 }
 
-let { lastTimestamp } = loadData();
+let { lastTimestamp } = loadData(); // Meng-load data terbaru (Ignoring last chat before stream)
 
 async function fetchLiveChatMessages() {
     try {
